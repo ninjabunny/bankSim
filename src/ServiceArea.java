@@ -58,18 +58,24 @@ class ServiceArea {
 		// use ArrayDeque to construct FIFO queue objects
 		// construct PriorityQueue object
 		busyTellerQ = new PriorityQueue<Teller>();
-		
+
 		// overide compare() in Comparator to compare Teller objects
-		busyTellerQ = new PriorityQueue<Teller>(numTellers,
-				new CompareTellers());
+		//what does this mean? the CompareTellers is already comparing tellers is this already done?
+		
+		// busyTellerQ = new PriorityQueue<Teller>(numTellers,
+		// new CompareTellers());
+		
 
 		// initialize customerQlimit
-		this.customerQLimit = customerQLimit;
-		// Construct Teller objects and insert into FreeTellerQ
-		Teller t1 = new Teller();
-		freeTellerQ.add(t1);
+		this.customerQLimit = customerQlimit;
 		
-		// assign teller ID from 1, 2,..., numTellers
+		// Construct Teller objects and insert into FreeTellerQ
+		for (int i = 0; i < numTellers; i++) {
+			// assign teller ID from 1, 2,..., numTellers			
+			freeTellerQ.add(new Teller(i + 1));
+		}
+
+
 
 		// add statements
 	}
@@ -81,22 +87,19 @@ class ServiceArea {
 	public Teller removeFreeTellerQ() {
 		// remove and return a free teller
 		// Add statetments
-		freeTellerQ.remove();
-		return null;
+		return freeTellerQ.remove();
 	}
 
 	public Teller removeBusyTellerQ() {
 		// remove and return a busy teller
 		// Add statetments
-		busyTellerQ.remove();
-		return null;
+		return busyTellerQ.remove();
 	}
 
 	public Customer removeCustomerQ() {
 		// remove and return a customer
 		// Add statetments
-		customerQ.remove();
-		return null;
+		return customerQ.remove();
 	}
 
 	// -----------------
@@ -178,7 +181,8 @@ class ServiceArea {
 	public boolean isCustomerQTooLong() {
 		// is customerQ too long?
 		// Add statetments
-		return numWaitingCustomers() > customerQLimit; //logic here might be wrong, or 1 off
+		return numWaitingCustomers() > customerQLimit; // logic here might be
+														// wrong, or 1 off
 	}
 
 	public void printStatistics() {
