@@ -1,3 +1,6 @@
+import java.util.PriorityQueue;
+import java.util.Random;
+
 // DO NOT ADD NEW METHODS OR DATA FIELDS!
 
 class Teller {
@@ -45,12 +48,17 @@ class Teller {
 		// to serve a new customer
 		//
 		// steps : update totalFreeTime
+		
+		
+		
 		// set startTime, endTime, currentCustomer,
-		this.startTime = currentTime;
-		this.endTime = 0;
+		this.currentCustomer = currentCustomer;
+		this.startTime = currentCustomer.getArrivalTime();
+		this.endTime = 0; ///what is this?
+		
 
 		// update totalCustomers
-
+		totalCustomers++;
 		// add statements
 	}
 
@@ -59,13 +67,15 @@ class Teller {
 		// goal : switch from busy interval to free interval
 		// i.e. end busy interval to return served customer,
 		// start free interval
-		//
+		
 		// steps : update totalBusyTime
+		totalBusyTime = getEndBusyIntervalTime();
 		// set startTime
-		// return currentCustomer
+		
+		// return currentCustomer DONE
 
 		// add statements
-		return null;
+		return currentCustomer;
 	}
 
 	// Return end busy time, use by priority queue
@@ -84,7 +94,7 @@ class Teller {
 		}
 		// for busy interval (1), update totalBusyTime
 		if (intervalType == 1) {
-			totalFreeTime+=totalBusyTime;
+			totalBusyTime+=endsimulationtime;
 		}
 		// add statements
 	}

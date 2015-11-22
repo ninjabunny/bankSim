@@ -81,18 +81,21 @@ class ServiceArea {
 	public Teller removeFreeTellerQ() {
 		// remove and return a free teller
 		// Add statetments
+		freeTellerQ.remove();
 		return null;
 	}
 
 	public Teller removeBusyTellerQ() {
 		// remove and return a busy teller
 		// Add statetments
+		busyTellerQ.remove();
 		return null;
 	}
 
 	public Customer removeCustomerQ() {
 		// remove and return a customer
 		// Add statetments
+		customerQ.remove();
 		return null;
 	}
 
@@ -103,11 +106,13 @@ class ServiceArea {
 	public void insertFreeTellerQ(Teller teller) {
 		// insert a free teller
 		// Add statetments
+		freeTellerQ.add(teller);
 	}
 
 	public void insertBusyTellerQ(Teller teller) {
 		// insert a busy teller
 		// Add statetments
+		busyTellerQ.add(teller);
 	}
 
 	public void insertCustomerQ(Customer customer) {
@@ -122,19 +127,19 @@ class ServiceArea {
 	public boolean emptyFreeTellerQ() {
 		// is freeTellerQ empty?
 		// Add statetments
-		return false;
+		return freeTellerQ.isEmpty();
 	}
 
 	public boolean emptyBusyTellerQ() {
 		// is busyTellerQ empty?
 		// Add statetments
-		return false;
+		return busyTellerQ.isEmpty();
 	}
 
 	public boolean emptyCustomerQ() {
 		// is customerQ empty?
 		// Add statetments
-		return false;
+		return customerQ.isEmpty();
 	}
 
 	// -----------------
@@ -144,19 +149,19 @@ class ServiceArea {
 	public int numFreeTellers() {
 		// get number of free tellers
 		// Add statetments
-		return 0;
+		return freeTellerQ.size();
 	}
 
 	public int numBusyTellers() {
 		// get number of busy tellers
 		// Add statetments
-		return 0;
+		return busyTellerQ.size();
 	}
 
 	public int numWaitingCustomers() {
 		// get number of customers
 		// Add statetments
-		return 0;
+		return customerQ.size();
 	}
 
 	// -----------------
@@ -167,13 +172,13 @@ class ServiceArea {
 		// get front of busy tellers
 		// "retrieve" but not "remove"
 		// Add statetments
-		return null;
+		return busyTellerQ.peek();
 	}
 
 	public boolean isCustomerQTooLong() {
 		// is customerQ too long?
 		// Add statetments
-		return false;
+		return numWaitingCustomers() > customerQLimit; //logic here might be wrong, or 1 off
 	}
 
 	public void printStatistics() {
