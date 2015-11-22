@@ -48,14 +48,13 @@ class Teller {
 		// to serve a new customer
 		//
 		// steps : update totalFreeTime
-		
-		
-		
+
 		// set startTime, endTime, currentCustomer,
 		this.currentCustomer = currentCustomer;
 		this.startTime = currentCustomer.getArrivalTime();
-		this.endTime = 0; ///what is this?
 		
+		//this might be wrong, unsure
+		this.endTime = currentTime + currentCustomer.getTransactionTime();
 
 		// update totalCustomers
 		totalCustomers++;
@@ -67,11 +66,11 @@ class Teller {
 		// goal : switch from busy interval to free interval
 		// i.e. end busy interval to return served customer,
 		// start free interval
-		
+
 		// steps : update totalBusyTime
 		totalBusyTime = getEndBusyIntervalTime();
 		// set startTime
-		
+		this.startTime = currentCustomer.getArrivalTime();
 		// return currentCustomer DONE
 
 		// add statements
@@ -90,11 +89,11 @@ class Teller {
 		// set endTime,
 		// for free interval (0), update totalFreeTime
 		if (intervalType == 0) {
-			totalFreeTime+=endsimulationtime;
+			totalFreeTime += endsimulationtime;
 		}
 		// for busy interval (1), update totalBusyTime
 		if (intervalType == 1) {
-			totalBusyTime+=endsimulationtime;
+			totalBusyTime += endsimulationtime;
 		}
 		// add statements
 	}
