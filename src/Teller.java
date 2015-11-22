@@ -79,11 +79,13 @@ class Teller {
 		// for end of simulation
 		// set endTime,
 		// for free interval (0), update totalFreeTime
-		if (intervalType = 0) {
-
+		if (intervalType == 0) {
+			totalFreeTime+=endsimulationtime;
 		}
 		// for busy interval (1), update totalBusyTime
-
+		if (intervalType == 1) {
+			totalFreeTime+=totalBusyTime;
+		}
 		// add statements
 	}
 
