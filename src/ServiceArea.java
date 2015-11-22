@@ -1,4 +1,3 @@
-
 import java.util.*;
 
 //--------------------------------------------------------------------------
@@ -57,14 +56,19 @@ class ServiceArea {
 	// Constructor
 	public ServiceArea(int numTellers, int customerQlimit) {
 		// use ArrayDeque to construct FIFO queue objects
-
 		// construct PriorityQueue object
+		busyTellerQ = new PriorityQueue<Teller>();
+		
 		// overide compare() in Comparator to compare Teller objects
 		busyTellerQ = new PriorityQueue<Teller>(numTellers,
 				new CompareTellers());
 
 		// initialize customerQlimit
+		this.customerQLimit = customerQLimit;
 		// Construct Teller objects and insert into FreeTellerQ
+		Teller t1 = new Teller();
+		freeTellerQ.add(t1);
+		
 		// assign teller ID from 1, 2,..., numTellers
 
 		// add statements
